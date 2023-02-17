@@ -44,5 +44,10 @@ def read_population(filename: str = 'population.xlsx') -> dict:
                 ret[geo]['Density Rank'] = int(row[3].value)
     return ret
 
+def generate_power_consumption() -> dict:
+    '''Generate power consumption data'''
+    ret = {}
+    return ret
+
 print(read_gdp())
 print(read_population())
