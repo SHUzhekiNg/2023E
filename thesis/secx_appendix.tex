@@ -1,0 +1,30 @@
+%% partlast
+\MinParskip{}
+
+% \section{Appendices}
+% \subsection{Code for College Data}
+% \begin{lstlisting}
+%     clc,clear;
+%     d1 = readmatrix("college_data.txt");
+    
+%     d2 = zscore(d1);
+%     r = cov(d2);
+    
+%     [vec1,val,con] = pcacov(r);
+%     f1 = repmat(sign(sum(vec1)),size(vec1,1),1);
+%     vec2 = vec1.*f1
+%     f2 = repmat(sqrt(val)',size(vec2,1),1);
+%     a = vec2.*f2
+    
+%     num = 2;
+    
+%     am = a(:, [1:num]);
+%     [b,t] = rotatefactors(am,'method','varimax');
+%     bt = [b,a(:, [num+1:end])];
+    
+%     degree = sum(b.^2,2);
+%     contr = sum(bt.^2);
+%     rate = contr(1:num)/sum(contr);
+    
+%     coef = inv(r)*b;    
+% \end{lstlisting}

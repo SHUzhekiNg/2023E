@@ -1,0 +1,63 @@
+\ProvidesPackage{assets/define}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}{Definition}	
+
+
+\newcommand{\MinParskip}{
+    \setlength{\parskip}{1ex}
+}
+\newcommand{\MaxVspace}{
+    \vspace{3ex}
+}
+
+
+\newcommand{\Problem}{B}
+\newcommand{\Team}{2300050}
+\newcommand{\CompYear}{2023}
+\newcommand{\MyTitle}{An Aerial Disaster Relief Response System Based On Goal Programming Model}
+
+
+\newcommand{\Header}{
+    \setlength{\headheight}{20pt}
+    \setlength{\baselineskip}{16pt}
+    \thispagestyle{empty}  % header and footer of this page are not displayed.
+    \vspace*{-16ex}  % line spacing
+    \lhead{Team \# \Team}
+    \rhead{}
+    \cfoot{}
+    \date{\today}
+    \centerline{
+	\begin{tabular}{*3{c}}
+		\parbox[t]{0.3\linewidth}{\begin{center}\textbf{Problem Chosen}\\ \Large {\Problem}\end{center}}
+		& \parbox[t]{0.3\linewidth}{\begin{center}\textbf{\CompYear \\ MCM/ICM\\ Summary Sheet}\end{center}}
+		& \parbox[t]{0.3\linewidth}{\begin{center}\textbf{Team Control Number}\\ \Large {\Team}\end{center}}	\\
+	\hline
+	\end{tabular}
+    }
+}
+
+\newcommand{\Contents}{
+    \pagestyle{fancy}  % set footer form
+    \newpage
+    \setcounter{page}{2}  % clear
+    %\setlength{cmd}{length}
+    \rhead{Page \thepage\ of~\pageref{LastPage}} 
+    \hypersetup{linkcolor=black}
+    \tableofcontents 
+}
+
+\newcommand{\References}{
+    \newpage
+    \bibliography{assets/refs}
+    \addcontentsline{toc}{section}{\protect{References}}
+}
+
+\newcommand{\Appendix}{
+    \begin{appendix}
+	\input{secx_appendix}
+    \end{appendix}
+}
+
