@@ -22,15 +22,21 @@ The mostly used symbols and their definitions are defined (Table 1), and more sy
     \caption{Notations of symbols}
     \begin{tabular}{ccl}
         \toprule
-        Symbol & Data Type & Description\\ \hline
-        $D_{ik}$ & Boolean & The i-th drone will heading for the k-th place. \\
-        $Y_{im}$ & Boolean & The i-th drone uses the m-th type of drone. \\
-        $V_i$ & Boolean & The i-th drone has video capability. \\
-        $C_{imk}$ & Boolean & The i-th drone carries the m-th type of package to the\\ & & k-th place.\\
-        $T_i$ & Two-dimensional Array & The possible combination of the i-th drone to carry the\\ & &packages.\\
-        $T_i[j][m]$ & Interger & The number of the m-th type of package in the j-th\\ & & combination of the i-th drone.\\
-        $X_m$ & Two-dimensional Array & The combination of different medical packages in the\\ & & m-th type of package. \\
-        $N_k$ & Vector & The number of the medical packages needed in the k-th \\ & & place.\\
+        Symbol & Description\\ \hline
+        $a_{ij}$ & The value of the j-th indicator of the i-th city to be evaluated. \\
+        $A=(a_{ij})_{i×j}$ & Data matrix composed by $a_{ij}$. \\
+        $p_{ij}$ & The proportion of the i-th evaluation objective to the j-th indicator. \\
+        $e_j$ & The entropy value of the j-th indicator. \\
+        $w_j$ & The weight of the j-th indicator. \\
+        $b_{ij}$ & The data from $a_{ij}$ after standard 0-1 transformation.\\
+        $B=(b_{ij})_{i×j}$ & The decision matrix composed by $b_{ij}$ after processing.\\
+        $C=W*B$ & The vector normalization attribute matrix after weighting. \\
+        $C_i$ & The i-th roll of the $C$ matrix. \\
+        $C^*=[b_1^{max},b_2^{max},\cdots,b_j^{max}]$ & The positive ideal solution. \\
+        $C^*=[b_1^{min},b_2^{min},\cdots,b_j^{min}]$ & The negative ideal solution. \\
+        $s_i^*$ & The distance from $C_i$ to the positive ideal solution. \\
+        $s_i^0$ & The distance from $C_i$ to the negative ideal solution. \\
+        $f_i$ & The night-time light intensity of the i-th city. \\
         \bottomrule
     \end{tabular}
 \end{table}
