@@ -1,17 +1,17 @@
 from openpyxl import load_workbook
 
 # Areas to analyze
-geo_names = ['Alabama']
+geo_names = ['New York']
 
 # GDP items to be analyzed
-gdp_types = ['Construction',
-         'Transportation and warehousing',
-         'Broadcasting (except Internet) and telecommunications',
-         'Finance and insurance',
-         'Health care and social assistance',
-         'Arts, entertainment, and recreation',
-         'All industry total'
-         ]
+gdp_types = ['All industry total',
+             'Construction',
+             'Transportation and warehousing',
+             'Broadcasting (except Internet) and telecommunications',
+             'Finance and insurance',
+             'Health care and social assistance',
+             'Arts, entertainment, and recreation'
+             ]
 
 def read_gdp(filename: str = 'gdp.xlsx') -> dict:
     '''Read GDP data from xlsx file'''
@@ -40,7 +40,7 @@ def read_population(filename: str = 'population.xlsx') -> dict:
         for row in sheet.rows:
             if row[0].value == geo:
                 ret[geo]['Population'] = int(row[1].value)
-                ret[geo]['Population Density'] = int(row[2].value)
+                ret[geo]['Population Density'] = float(row[2].value)
                 ret[geo]['Density Rank'] = int(row[3].value)
     return ret
 
@@ -49,5 +49,29 @@ def generate_power_consumption() -> dict:
     ret = {}
     return ret
 
-print(read_gdp())
-print(read_population())
+def generate_csv() -> str:
+    '''Generate csv content'''
+    # generate title
+    ret = 'Area'
+    for t in gdp_types:
+        ret += ', ' + t.replace(',', '') + '(GDP)'
+    ret += ', Population, Population Density, Density Rank\n'
+
+    # read data
+    gdp = read_gdp()
+    population = read_population()
+
+    # write data
+    for geo in geo_names:
+        ret += geo
+        for t in gdp_types:
+            ret += ', ' + str(gdp[geo][t])
+        ret += ', ' + str(population[geo]['Population'])
+        ret += ', ' + str(population[geo]['Population Density'])
+        ret += ', ' + str(population[geo]['Density Rank'])
+    return ret
+
+if __name__ == '__main__':
+    with open('combined.csv', 'w') as f:
+        f.write(generate_csv())
+
