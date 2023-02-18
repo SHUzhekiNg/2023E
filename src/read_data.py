@@ -110,6 +110,18 @@ def read_work_hours(filename: str = 'work_hours.xlsx') -> dict:
                 ret[geo]['Work hours per Week'] = float(row[1].value)
     return ret
 
+def read_nightlife_index(filename: str = 'nightlife_index.xlsx') -> dict:
+    '''Read power consumption data'''
+    ret = {}
+    workbook = load_workbook(filename)
+    sheet = workbook.worksheets[0]
+    for geo in geo_names:
+        ret[geo] = {}
+        for row in sheet.rows:
+            if row[0].value == geo:
+                ret[geo]['Nightlife index'] = float(row[1].value)
+    return ret
+
 def read_all_data() -> dict:
     '''Read and combine all data'''
     all_data = [read_gdp('../data/GDP by State(tables only).xlsx'),
@@ -118,7 +130,8 @@ def read_all_data() -> dict:
                 read_last_bus('../data/公交末班车.xlsx'),
                 read_power_consumption('../data/每月人均用电量.xlsx'),
                 read_annual_precipitation('../data/年降水量.xlsx'),
-                read_work_hours('../data/人均工作时长.xlsx')]
+                read_work_hours('../data/人均工作时长.xlsx'),
+                read_nightlife_index('../data/夜生活谷歌搜索指数.xlsx')]
     ret = {}
     for item in all_data:
         for (geo, data) in item.items():
