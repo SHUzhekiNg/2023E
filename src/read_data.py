@@ -1,7 +1,15 @@
 from openpyxl import load_workbook
 
 # Areas to analyze
-geo_names = ['New York', 'Washington']
+geo_names = ['Massachusetts',
+             'New York',
+             'New Jersey',
+             'California',
+             'Pennsylvania',
+             'Washington',
+             'Nevada',
+             'Mississippi',
+             'New Mexico']
 
 # GDP items to be analyzed
 gdp_types = ['All industry total',
@@ -10,8 +18,7 @@ gdp_types = ['All industry total',
              'Broadcasting (except Internet) and telecommunications',
              'Finance and insurance',
              'Health care and social assistance',
-             'Arts, entertainment, and recreation'
-             ]
+             'Arts, entertainment, and recreation']
 
 def read_gdp(filename: str = 'gdp.xlsx') -> dict:
     '''Read GDP data from xlsx file'''
@@ -53,6 +60,18 @@ def read_limiting_magnitude(filename: str = 'limiting_magnitude.xlsx') -> dict:
         for row in sheet.rows:
             if row[0].value == geo:
                 ret[geo]['Limiting Magnitude'] = float(row[1].value)
+    return ret
+
+def read_last_bus(filename: str = 'last_bus.xlsx') -> dict:
+    '''Reading limiting magnitude from xlsx'''
+    ret = {}
+    workbook = load_workbook(filename)
+    sheet = workbook.worksheets[0]
+    for geo in geo_names:
+        ret[geo] = {}
+        for row in sheet.rows:
+            if row[0].value == geo:
+                ret[geo]['Last Bus'] = float(row[1].value)
     return ret
 
 def read_power_consumption() -> dict:
