@@ -17,47 +17,21 @@ combined = readtable("../data/combined.csv", opts);
 cities = table2array(combined(:, 1));
 a = table2array(combined(:, 2:10));
 
-%% Import data from xlsx
-% opts = spreadsheetImportOptions("NumVariables", 9);
-
-% Delimit
-% opts.Sheet = "combined";
-% opts.DataRange = "B2:J10";
-
-% Set column name and type
-% opts.VariableNames = ["AllIndustryTotal", "AllTertiaryIndustryPercentage", "PopulationDensity", "LimitingMagnitude", "LastBus", "PowerConsumptionPerCapitaPerMonth", "AnnualPrecipitationinMillimetre", "WorkHoursPerWeek", "NightlifeIndex"];
-% opts.VariableTypes = ["double", "double", "double", "double", "double", "double", "double", "double", "double"];
-
-% Set variable property
-% opts = setvaropts(opts, "Area", "WhitespaceRule", "preserve");
-% opts = setvaropts(opts, "Area", "EmptyFieldRule", "auto");
-
-% Import data
-% a = readtable("../data/合并数据.xlsx", opts, "UseExcel", false);
-
-% Clear temporary data
-% clear opts
-
-%% convert to matrix
-
 %% calculate weight
 [n, m] = size(a);
+
+% calculate weight
 p = a ./ sum(a);
 e = -sum(p .* log(p)) / log(n);
 g = 1 - e;
 w = g / sum(g); % this is weight
 
-%% rescale
+%% TOPSIS
+% rescale
 for i = 1:m
     a(:,i) = rescale(a(:,i));
 end
 
-%% TOPSIS
-%x2 = @(range, lb, ub, x)(1-(range(1)-x)./(range(1)-lb)).*...
-%(x>=lb&x<range(1))+(x>=range(1)&x<=range(2))+...
-%(1-(x-range(2))./(ub-range(2))).*(x>range(2)&x<=ub);
-%range = [0, 1]; lb = 2; ub = 12;
-%a(:, 2) = x2(range, lb, ub, a(:, 2));
 b = a ./ vecnorm(a);
 c = b .* w;
 Cstar = max(c);
