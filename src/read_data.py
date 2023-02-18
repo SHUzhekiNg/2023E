@@ -81,7 +81,7 @@ def read_power_consumption() -> dict:
 
 def read_all_data() -> dict:
     '''Read and combine all data'''
-    all_data = [read_gdp(), read_population(), read_limiting_magnitude(), read_power_consumption()]
+    all_data = [read_gdp(), read_population(), read_limiting_magnitude(), read_last_bus(), read_power_consumption()]
     ret = {}
     for item in all_data:
         for (geo, data) in item.items():
