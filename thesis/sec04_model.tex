@@ -20,7 +20,6 @@ Through the three steps, we can easily get the weight of each indicator.
 
 
 \subsection{The TOPSIS Method}
-/*NOTDONENOTDONE
 
 The Technique for Order of Preference by Similarity to Ideal Solution (TOPSIS) is a multi-criteria decision-making method that is used to determine the best option from a set of alternatives based on multiple criteria. 
 
@@ -36,11 +35,25 @@ All these data from the normalized matrix $B$. We then multiply each value in a 
 
 Secondly, calculating the ideal best and the ideal worst. Now we need to calculate Euclidean distance for elements in all rows from the ideal best and the ideal worst. Here, $s_i^*$ is the best distance calculated on the i-th row, where $b_{ij}$ is element value and $C_i^{*}$ is the ideal best for that column. Similarly, we can find $s_i^0$, which is the worst distance calculated on the i-th row.
 
-// insert a table
+\begin{table}[H] \centering
+    \caption{Weights of the Indicators Calculated from TOPSIS}
+    \begin{tabular}{ccl}
+        \toprule
+        Indicators & Weights\\ \hline
+        All industry total & 0.36639\\
+        All tertiary industry percentage & 0.01866\\
+        Population Density & 0.43171\\
+        Limiting Magnitude & 0.01781\\
+        Last Bus Time & 0.06481\\
+        Power Consumption per Capita per Month & 0.00091\\
+        Annual Precipitation(in millimetre) & 0.08705\\
+        Work hours per Week & 0.00003\\
+        Nightlife index & 0.01263\\
+        \bottomrule
+    \end{tabular}
+\end{table}
 
 Finally, calculate the TOPSIS Score and Ranking. Now we have distance positive and distance negative, calculate the Topsis score for each row based on them in the end.
-
-NOTDONENOTDONE*/
 
 \subsection{Application of the Model on the Four Locations}
 

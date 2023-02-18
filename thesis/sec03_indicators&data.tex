@@ -1,10 +1,12 @@
 \section{The EWM-TOPSIS Model}
 
 \subsection{Indicators of the Model}
-We selected 9 cities as evaluation objects. As the night-time light intensity directly reflects the extent of light pollution, so it is regarded as the direct evaluation indicator, and we chose 9 indirect indicators as evaluation indicator variables to evaluate the night light level of the city. 
+We selected 12 states in the USA as evaluation objects. As the night-time light intensity directly reflects the extent of light pollution, so it is regarded as the direct evaluation indicator, and we chose 9 indirect indicators as evaluation indicator variables to evaluate the night light level of the city. 
 The value of the j-th index variable of the i-th city evaluated is $a_{ij}$, building a matrix $A=(a_{ij})_{9\times9}$.
 
-The 9 indirect indicators we selected are population density, night-time electricity consumption, per capita GDP, regional industrial structure, regional average working hours, the last bus time of public transport, night life index, year precipitation, limiting magnitude, etc. Among these indicators, only the limiting magnitude is an objective indicator and cannot be changed.
+The 12 states in the USA we selected are Massachusetts, New York, New Jersey, California, Pennsylvania, Washington, Nevada, Mississippi, NewMexico, Wyoming, Montana, Alaska. The first three states are taken as urban communities, the second three states are taken as suburban communities, the third three states are taken as rural communities, and the last three states are taken as protected land locations.
+
+The 9 indirect indicators we selected are population density, night-time electricity consumption, per capita GDP, regional industrial structure, regional average working hours, the last bus time of public transportation, night life index, year precipitation, limiting magnitude, etc. Among these indicators, only the limiting magnitude is an objective indicator and cannot be changed.
 
 To explain the selection of indicators, We divide the indicators into two categories. One is the benefit-attributed indicators. The larger the data index, the higher the night-time light intensity. The other is the cost-attributed indicators. The smaller the data index, the higher the night-time light intensity.
 
@@ -23,7 +25,7 @@ For the benefit-attributed indicators, there are 7 indicators which are listed b
     
     \item \textbf{Year precipitation}. The more rainy days, the more precipitation, which also means the thicker clouds, thus increasing the reflectivity of light. 
 
-    \item \textbf{The last bus time of public transport}. The operation guarantee condition of ground public transportation is lighting, so the lighting will naturally increase during the traffic operation time. And also to some extent, the last subway train time is connected with the night-time living. The later the last bus is, the higher the night-time lighting level will be, so it belongs to the benefit data.
+    \item \textbf{The last bus time of public transportation}. The operation guarantee condition of ground public transportation is lighting, so the lighting will naturally increase during the traffic operation time. And also to some extent, the last subway train time is connected with the night-time living. The later the last bus is, the higher the night-time lighting level will be, so it belongs to the benefit data.
     
 \end{enumerate}
 
@@ -47,7 +49,7 @@ We got our data from these websites listed below:
         GDP per capita & Bureau of Economic Analysis (BEA)\cite{bea} \\
         Regional industrial structure & Bureau of Economic Analysis (BEA)\cite{bea} \\
         Average working hours in the region & Business.org \cite{overwork}\\
-        The last bus time of public transport & Google Map \cite{google_map}\\
+        The last bus time of public transportion & Google Map \cite{google_map}\\
         Nightlife index & Google Trends \cite{nightlife_index} \\
         Limit magnitude & DarkMap \cite{darkmap} \\
         Average Annual Precipitation & CurrentResults.com \cite{currentresults} \\
