@@ -9,7 +9,10 @@ geo_names = ['Massachusetts',
              'Washington',
              'Nevada',
              'Mississippi',
-             'New Mexico']
+             'Missouri',
+             'Wyoming',
+             'Montana',
+             'Alaska']
 
 # GDP items to be analyzed
 # 'All industry total'
@@ -50,7 +53,7 @@ def read_population(filename: str = 'population.xlsx') -> dict:
         ret[geo] = {}
         for row in sheet.rows:
             if row[0].value == geo:
-                ret[geo]['Population'] = int(row[1].value)
+                # ret[geo]['Population'] = int(row[1].value)
                 ret[geo]['Population Density'] = float(row[2].value)
                 # ret[geo]['Density Rank'] = int(row[3].value)
     return ret
