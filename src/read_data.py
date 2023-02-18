@@ -47,7 +47,7 @@ def read_population(filename: str = 'population.xlsx') -> dict:
             if row[0].value == geo:
                 ret[geo]['Population'] = int(row[1].value)
                 ret[geo]['Population Density'] = float(row[2].value)
-                ret[geo]['Density Rank'] = int(row[3].value)
+                # ret[geo]['Density Rank'] = int(row[3].value)
     return ret
 
 def read_limiting_magnitude(filename: str = 'limiting_magnitude.xlsx') -> dict:
@@ -74,14 +74,64 @@ def read_last_bus(filename: str = 'last_bus.xlsx') -> dict:
                 ret[geo]['Last Bus'] = float(row[1].value)
     return ret
 
-def read_power_consumption() -> dict:
+def read_power_consumption(filename: str = 'power_comsumption.xlsx') -> dict:
     '''Read power consumption data'''
     ret = {}
+    workbook = load_workbook(filename)
+    sheet = workbook.worksheets[0]
+    for geo in geo_names:
+        ret[geo] = {}
+        for row in sheet.rows:
+            if row[0].value == geo:
+                ret[geo]['Power Consumption per Capita per Month'] = float(row[1].value)
+    return ret
+
+def read_annual_precipitation(filename: str = 'annual_precipitation.xlsx') -> dict:
+    '''Read power consumption data'''
+    ret = {}
+    workbook = load_workbook(filename)
+    sheet = workbook.worksheets[0]
+    for geo in geo_names:
+        ret[geo] = {}
+        for row in sheet.rows:
+            if row[0].value == geo:
+                ret[geo]['Annual Precipitation(in millimetre)'] = float(row[2].value)
+    return ret
+
+def read_work_hours(filename: str = 'work_hours.xlsx') -> dict:
+    '''Read power consumption data'''
+    ret = {}
+    workbook = load_workbook(filename)
+    sheet = workbook.worksheets[0]
+    for geo in geo_names:
+        ret[geo] = {}
+        for row in sheet.rows:
+            if row[0].value == geo:
+                ret[geo]['Work hours per Week'] = float(row[1].value)
+    return ret
+
+def read_nightlife_index(filename: str = 'nightlife_index.xlsx') -> dict:
+    '''Read power consumption data'''
+    ret = {}
+    workbook = load_workbook(filename)
+    sheet = workbook.worksheets[0]
+    for geo in geo_names:
+        ret[geo] = {}
+        for row in sheet.rows:
+            if row[0].value == geo:
+                ret[geo]['Nightlife index'] = float(row[1].value)
     return ret
 
 def read_all_data() -> dict:
     '''Read and combine all data'''
-    all_data = [read_gdp(), read_population(), read_limiting_magnitude(), read_last_bus(), read_power_consumption()]
+    all_data = [read_gdp('../data/GDP by State(tables only).xlsx'),
+                read_population('../data/population-density-data-table.xlsx'),
+                read_limiting_magnitude('../data/极限星等.xlsx'),
+                read_last_bus('../data/公交末班车.xlsx'),
+                read_power_consumption('../data/每月人均用电量.xlsx'),
+                read_annual_precipitation('../data/年降水量.xlsx'),
+                read_work_hours('../data/人均工作时长.xlsx'),
+                read_nightlife_index('../data/夜生活谷歌搜索指数.xlsx')]
     ret = {}
     for item in all_data:
         for (geo, data) in item.items():
@@ -109,6 +159,6 @@ def generate_csv() -> str:
     return ret
 
 if __name__ == '__main__':
-    with open('combined.csv', 'w') as f:
+    with open('../data/combined.csv', 'w', encoding='utf-8') as f:
         f.write(generate_csv())
 

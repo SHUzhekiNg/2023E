@@ -1,0 +1,39 @@
+\section{The EWM-TOPSIS Model}
+
+\subsection{Indicators of the Model}
+We selected 9 cities as evaluation objects. As the night-time light intensity directly reflects the extent of light pollution, so it is regarded as the direct evaluation indicator, and we chose 9 indirect indicators as evaluation indicator variables to evaluate the night light level of the city. 
+The value of the j-th index variable of the i-th city evaluated is $a_{ij}$, building a matrix $A=(a_{ij})_{9\times9}$.
+
+The 9 indicators we selected are population density, night-time electricity consumption, per capita GDP, regional industrial structure, regional average working hours, the last bus time of public transport, night life index, year precipitation, limiting magnitude, etc. Among these indicators, only the limiting magnitude is an objective indicator and cannot be changed.
+
+To explain the selection of indicators, We divide the indicators into two categories. One is the benefit-attributed indicators. The larger the data index, the higher the night-time light intensity. The other is the cost-attributed indicators. The smaller the data index, the higher the night-time light intensity.
+
+For the benefit-attributed indicators, there are 6 indicators which are listed below.
+
+\begin{enumerate}
+    \item \textbf{Population density}. With the increase of population density in a region, the illumination demand of this region's public space also increases, thus increasing the night-time light intensity.
+ 
+    \item \textbf{Night-time electricity consumption}. A large part of night-time electricity consumption is used for lighting, so it can also reflect the night-time light intensity to a certain extent, which is a benefit data. 
+     
+    \item \textbf{GDP per capita}. GDP per capita reflects the degree of local development. The more developed and prosperous the region, the more shopping malls and high-rise buildings in prosperous areas. And we believe the LED lights in shopping malls and the glass curtain walls of high-rise buildings lead to an increase in night-time light intensity, which may lead to the light pollution.
+     
+    \item \textbf{Regional industrial structure}. The demand for illumination in various industries is different. The primary industry has little demand for light. Some industries in the secondary industry have requirements for light, and the tertiary industry service industry is extremely dependent on light to attract customers. So the industrial structure also has an impact on the local night-time light intensity, and we believe that the more the proportion of the tertiary industry, the higher the nighttime light intensity is. 
+     
+    \item \textbf{Nightlife index}. Nightlife is a collective term for entertainment that is available and generally more popular from the late evening into the early hours of the morning. As long as nightlife prevails, the lighting demand increases. The higher the nightlife index of a region, the higher the nighttime light level, which belongs to the benefit data.
+    
+    \item \textbf{Year precipitation}. The more rainy days, the more precipitation, which also means the thicker clouds, thus increasing the reflectivity of light. 
+
+    \item \textbf{The last bus time of public transport}. The operation guarantee condition of ground public transportation is lighting, so the lighting will naturally increase during the traffic operation time. And also to some extent, the last subway train time is connected with the night-time living. The later the last bus is, the higher the night-time lighting level will be, so it belongs to the benefit data.
+    
+\end{enumerate}
+
+For the cost-attributed indicators, there are 2 indicators which are listed below.
+\begin{enumerate}
+    \item \textbf{The average working hours in the region}. The earlier people leave work, the earlier the end of the evening commute. So the demand for high-beam lights will become less, and the demand for night lighting time will become less, so it will affect the level of night-time lighting.
+    
+    \item \textbf{Limit magnitude}. Limit magnitude refers to the darkest magnitude that can be observed through a telescope. The higher the limit magnitude that can be seen, the lower the brightness on the ground, that is equal to lower level of illumination at night, so it belongs to the cost data.
+\end{enumerate}
+
+
+\subsection{Data Collection}
+We got historical population density data in \textbf{Census.gov} \cite{bureau_historical_nodate}, time ranging from 1910 to 2020. 
