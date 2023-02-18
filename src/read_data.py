@@ -12,8 +12,8 @@ geo_names = ['Massachusetts',
              'New Mexico']
 
 # GDP items to be analyzed
-gdp_types = ['All industry total',
-             'Construction',
+# 'All industry total'
+gdp_types = ['Construction',
              'Transportation and warehousing',
              'Broadcasting (except Internet) and telecommunications',
              'Finance and insurance',
@@ -28,12 +28,17 @@ def read_gdp(filename: str = 'gdp.xlsx') -> dict:
 
     for geo in geo_names:
         ret[geo] = {}
+        total = 0.0
         for row in sheet.rows:
             if row[1].value == geo:
                 desc = str(row[3].value).strip()
                 num = float(row[4].value) if not row[4].value == '' else 0
                 if desc in gdp_types:
-                    ret[geo][desc + '(GDP)'] = num
+                    total += num
+                if desc == 'All industry total':
+                    ret[geo]['All industry total'] = num
+        # ret[geo]['All tertiary industry total'] = total
+        ret[geo]['All tertiary industry percentage'] = total / ret[geo]['All industry total']
     return ret
 
 def read_population(filename: str = 'population.xlsx') -> dict:

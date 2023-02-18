@@ -1,31 +1,7 @@
 % Initialize
 clc, clear;
 
-%% set import option and import data
-opts = delimitedTextImportOptions("NumVariables", 12);
 
-% delimit
-opts.DataLines = [2, Inf];
-opts.Delimiter = ",";
-
-% set column name and type
-opts.VariableNames = ["Area", "AllIndustryTotalGDP", "ConstructionGDP", "TransportationAndWarehousingGDP", "BroadcastingexceptInternetAndTelecommunicationsGDP", "FinanceAndInsuranceGDP", "HealthCareAndSocialAssistanceGDP", "ArtsEntertainmentAndRecreationGDP", "Population", "PopulationDensity", "DensityRank", "LimitingMagnitude"];
-opts.VariableTypes = ["string", "double", "double", "double", "double", "double", "double", "double", "double", "double", "double", "double"];
-
-% set file property
-opts.ExtraColumnsRule = "ignore";
-opts.EmptyLineRule = "read";
-
-% set variable property
-opts = setvaropts(opts, "Area", "WhitespaceRule", "preserve");
-opts = setvaropts(opts, "Area", "EmptyFieldRule", "auto");
-
-% import data
-combined = readtable("D:\wangyw15\Desktop\2023E\src\combined.csv", opts);
-
-
-%% clear temprature data
-clear opts
 
 % Read data
 a = [1:4; 5:8; 9:12];
