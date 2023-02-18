@@ -43,12 +43,12 @@ In other words, the weight of each indicator is given according to the differenc
 
 The greater the entropy, the more chaotic the system is, the less information it carries and the less weight it has. Otherwise, the higher the entropy, the more orderly the system is, the more information it carries, and the greater the weight is.
 
-The first step of the Entropy Weight Method is the standardization of measured values. The standardized value of the jth index in the ith sample is denoted as $p_{ij}$, and its calculation method is as follows:$$p_{ij}=\frac{a_{ij}}{\sum_{i=1}^na_{ij}},i=1,2\cdots,,9,j=1,2,\cdots,8$$
+The first step of the Entropy Weight Method is the standardization of measured values. The standardized value of the jth index in the ith sample is denoted as $p_{ij}$, and its calculation method is as follows:$$p_{ij}=\frac{a_{ij}}{\sum_{i=1}^na_{ij}},i=1,2\cdots,,9,j=1,2,\cdots,9$$
 
-Secondly, in the EWM, the entropy value $e_i$ of the jth index is defined as:$$e_j=-\frac{1}{ln(9)}\sum_{i=1}^np_{ij}ln(p_{ij}),j=1,2,\cdots,8$$
+Secondly, in the EWM, the entropy value $e_i$ of the jth index is defined as:$$e_j=-\frac{1}{ln(9)}\sum_{i=1}^np_{ij}ln(p_{ij}),j=1,2,\cdots,9$$
 The range of entropy value $e_j$ is [0, 1]. The larger the $e_j$ is, the greater the differentiation degree of index j is, and more information can be derived. Hence, higher weight should be given to the index. 
 
-Finally, the calculation method of weight is:$$w_j=\frac{1-e_j}{\sum_{j=1}^me_j},j=1,2,\cdots,8$$
+Finally, the calculation method of weight is:$$w_j=\frac{1-e_j}{\sum_{j=1}^me_j},j=1,2,\cdots,9$$
 
 Through the three steps, we can easily get the weight of each indicator.
 
