@@ -18,23 +18,6 @@ Finally, the calculation method of weight is:$$w_j=\frac{1-e_j}{\sum_{j=1}^me_j}
 
 Through the three steps, we can easily get the weight of each indicator.
 
-
-\subsection{The TOPSIS Method}
-
-The Technique for Order of Preference by Similarity to Ideal Solution (TOPSIS) is a multi-criteria decision-making method that is used to determine the best option from a set of alternatives based on multiple criteria. 
-
-First of all, we use Min-Max normalization to process the data.
-
-For the benefit-attributed data,
-$$b_{ij}=\frac{a_{ij}-a_j^{min}}{a_j^{max}-a_j^{min}}$$
-
-And for the cost-attributed data,
-$$b_{ij}=\frac{a_{j}^{max}-a_{ij}}{a_j^{max}-a_j^{min}}$$
-
-All these data from the normalized matrix $B$. We then multiply each value in a column with the corresponding weight given, and get weighted-normalised decision matrix, which $$C=W*B$$
-
-Secondly, calculating the ideal best and the ideal worst. Now we need to calculate Euclidean distance for elements in all rows from the ideal best and the ideal worst. Here, $s_i^*$ is the best distance calculated on the i-th row, where $b_{ij}$ is element value and $C_i^{*}$ is the ideal best for that column. Similarly, we can find $s_i^0$, which is the worst distance calculated on the i-th row.
-
 \begin{table}[H] \centering
     \caption{Weights of the Indicators Calculated from TOPSIS}
     \begin{tabular}{ccl}
@@ -53,25 +36,85 @@ Secondly, calculating the ideal best and the ideal worst. Now we need to calcula
     \end{tabular}
 \end{table}
 
+
+\subsection{The TOPSIS Method}
+
+The Technique for Order of Preference by Similarity to Ideal Solution (TOPSIS) is a multi-criteria decision-making method that is used to determine the best option from a set of alternatives based on multiple criteria. 
+
+First of all, we use Min-Max normalization to process the data.
+
+For the benefit-attributed data,
+$$b_{ij}=\frac{a_{ij}-a_j^{min}}{a_j^{max}-a_j^{min}}$$
+
+And for the cost-attributed data,
+$$b_{ij}=\frac{a_{j}^{max}-a_{ij}}{a_j^{max}-a_j^{min}}$$
+
+All these data from the normalized matrix $B$. We then multiply each value in a column with the corresponding weight given, and get weighted-normalised decision matrix, which $$C=W*B$$
+
+Secondly, calculating the ideal best and the ideal worst. Now we need to calculate Euclidean distance for elements in all rows from the ideal best and the ideal worst. Here, $s_i^*$ is the best distance calculated on the i-th row, where $b_{ij}$ is element value and $C_i^{*}$ is the ideal best for that column. Similarly, we can find $s_i^0$, which is the worst distance calculated on the i-th row.
+
 Finally, calculate the TOPSIS Score and Ranking. Now we have distance positive and distance negative, calculate the Topsis score for each row based on them in the end.
 
 \subsection{Application of the Model on the Four Locations}
 
 
 \subsubsection{A Protected Land Location: Wyoming}
+For a protected land location, we choose Wyoming. Wyoming is a state in the Mountain West subregion of the Western United States. Almost half of the land in Wyoming is owned by the federal government, generally protected for public uses.
+
+Wyoming is the least populous state despite being the 10th largest by area, with the second-lowest population density after Alaska. And it's population density is 5.9 men per $km^2$. Since the sparse population, it's GDP is only 41510.2 million dollars per year. Without much demand for transportation, it's local bus deadline is 5 p.m., which largely reduce it's demand for road illumination. The nightlife index is only 37, which reason is closely related to the indicators above. This may account for the low power consumption, which is only 128.9 kWh. 
+
+Today, Wyoming's economy is largely based on tourism. So its tertiary industry percentage of GDP is similar to New York, which is one of the most prosperous city in the world. And the detailed data for tertiary industry percentage of GDP is 0.247. To support it's tourism, people should work for more hours, so we can see it's working hour is 40.3 hours per week.
+
+Due to it's geographical position, it's annual precipitation is 390 millimeters. And with its vast land, the limiting magnitude in Wyoming is 8.3, which means you can see several faint planet.
+
+According to the indicators we mentioned before, it's night-light intensity score in our model is 0.0507, which ranks the second-lowest in our selected locations. This shows that our model's application for protected location  is in line with the reality.
 \begin{figure}[H]\centering
-    \includegraphics[width=1\textwidth]{figures/texted/Wyoming.jpg}
+    \includegraphics[width=0.68\textwidth]{figures/texted/Wyoming_new.jpg}
     \caption{Night-time Light Intensity of Wyoming} \label{fig:figure3}
 \end{figure}
-\subsubsection{A Rural Community: Nevada}
 
+
+\subsubsection{A Rural Community: Nevada}
+For a rural community, we choose Nevada. Nevada is the 7th-most extensive, the 32nd-most populous, and the 9th-least densely populated of the US states. Its population density is 28.3 men per $km^2$. And its working hour belongs to the average level in US.
+
+As we all know, Las Vegas is located in Nevada. This may account for its night-life index of up to 70.Nevada's power consumption is 362.8 kWh per month, far more than protected locations, but similar to other locations.
+
+Legalized gambling and lenient marriage and divorce laws transformed Nevada into a major tourist destination in the 20th century, which promote local economy. Its GDP is 194486.6 per year and its tertiary industry percentage of GDP is 0.284. The early deadline of bus is mainly because of tourism. Its local bus deadline is 3 p.m.
+
+Nevada is the driest state, and its annual precipitation is 241 millimeters. Its limiting magnitude is 8.3, which means you can rarely see faint planet.
+
+According to the indicators we mentioned before, its night-light intensity score in our model is 0.0760, which ranks above all the protected locations in our selected locations, but below all the more prosperous states. This shows that our model's application for rural community is in line with the reality.
 \subsubsection{A Suburban Community: California}
+For a suburban community, we choose California, which borders Nevada to the east and has a long coastline along the Pacific Ocean to the west.
+
+Although it's third-largest state by area, it still has a population density of 253.7 men per $km^2$, resulting in the most populated state in the U.S.
+
+Due to its huge population, the economy of California is no doubt the largest in the United States. Its GDP is 3373240.7 per year, far more than any other state, and it's night-life index is 65. It's working hour is 38.3 hours per week, similar to other states.
+
+Sacramento is the state's capital, while Los Angeles is the most populous city in the state and the second most populous city in the country. So it has the highest power consumption among suburban communities, which values 394.2. And it also has the latest deadline of local bus, which is 11:30 p.m.
+
+California has a Mediterranean climate, depending on latitude, elevation, and proximity to the Pacific Coast. Its terrain varies widely from hot desert to alpine tundra. The average annual precipitation is 563 millimeters. And its limiting magnitude is 6, which means it's hard for you to see the stars by eyes.
 \begin{figure}[H]\centering
     \includegraphics[width=1\textwidth]{figures/texted/Nevada.jpg}
     \caption{Night-time Light Intensity of California and Nevada} \label{fig:figure4}
 \end{figure}
+
+
 \subsubsection{An Urban Community: New York}
+New York State is a highly developed state with a world famous international metropolis, New York. New York was one of the original Thirteen Colonies forming the United States. With a total area of 54,556 square miles (141,300 $km^2$), New York is the 27th-largest U.S. state by area. But also, it is the fourth-most-populous state in the United States as of 2021, with 20.2 million people.
+
+Due to its great importance in USA's and international economic, it's GDP is 1901296.5 million dollars per year. And in serving its highly developed service industry, it's local bus deadline is 1 a.m, and the nightlife index is 83, ranks the top of the chosen locations. And this leads to a huge power consumption, which is 412.8 kWh. 
+
+Since New York is famous for its economy, its tertiary industry percentage is the highest among the chosen locations. And it seems that people in New York States enjoys their life, as their average working hour is 38.4 hours per week.
+
+New York State has a temperate continental humid climate, with an annual precipitation 1062 millimeters. And with its well-explored land, the limiting magnitude in New York State is 4, which means you can seldom see faint planets.
+
+But according to the model, New York State night-light intensity score is 0.439, which ranks the fourth-highest in all but the lowest in the urban locations, even lower than California which is categorized as suburban communities. The result also makes sense since New York State have large part of area where is shown as green and blue in the picture below(Figure 5), respoding to a low night-time light intensity.
+
 \begin{figure}[H]\centering
     \includegraphics[width=1\textwidth]{figures/texted/New_York.jpg}
     \caption{Night-time Light Intensity of New York State} \label{fig:figure5}
 \end{figure}
+
+\subsubsection{Result of the TOPSIS Score and Ranking}
+
