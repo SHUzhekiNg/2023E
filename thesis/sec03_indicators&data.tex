@@ -4,11 +4,11 @@
 We selected 9 cities as evaluation objects. As the night-time light intensity directly reflects the extent of light pollution, so it is regarded as the direct evaluation indicator, and we chose 9 indirect indicators as evaluation indicator variables to evaluate the night light level of the city. 
 The value of the j-th index variable of the i-th city evaluated is $a_{ij}$, building a matrix $A=(a_{ij})_{9\times9}$.
 
-The 9 indicators we selected are population density, night-time electricity consumption, per capita GDP, regional industrial structure, regional average working hours, the last bus time of public transport, night life index, year precipitation, limiting magnitude, etc. Among these indicators, only the limiting magnitude is an objective indicator and cannot be changed.
+The 9 indirect indicators we selected are population density, night-time electricity consumption, per capita GDP, regional industrial structure, regional average working hours, the last bus time of public transport, night life index, year precipitation, limiting magnitude, etc. Among these indicators, only the limiting magnitude is an objective indicator and cannot be changed.
 
 To explain the selection of indicators, We divide the indicators into two categories. One is the benefit-attributed indicators. The larger the data index, the higher the night-time light intensity. The other is the cost-attributed indicators. The smaller the data index, the higher the night-time light intensity.
 
-For the benefit-attributed indicators, there are 6 indicators which are listed below.
+For the benefit-attributed indicators, there are 7 indicators which are listed below.
 
 \begin{enumerate}
     \item \textbf{Population density}. With the increase of population density in a region, the illumination demand of this region's public space also increases, thus increasing the night-time light intensity.
@@ -36,4 +36,21 @@ For the cost-attributed indicators, there are 2 indicators which are listed belo
 
 
 \subsection{Data Collection}
-We got historical population density data in \textbf{Census.gov} \cite{bureau_historical_nodate}, time ranging from 1910 to 2020. 
+We got our data from these websites listed below:
+\begin{table}[H] \centering
+    \caption{Data Sources}
+    \begin{tabular}{ccl}
+        \toprule
+        Data & Source\\ \hline
+        Population density & Census.gov \cite{bureau_historical_nodate} \\
+        Power consumption & U.S. Energy Information Administration (EIA) \cite{eia} \\
+        GDP per capita & Bureau of Economic Analysis (BEA)\cite{bea} \\
+        Regional industrial structure & Bureau of Economic Analysis (BEA)\cite{bea} \\
+        Average working hours in the region & Business.org \cite{overwork}\\
+        The last bus time of public transport & Google Map \cite{google_map}\\
+        Nightlife index & Google Trends \cite{nightlife_index} \\
+        Limit magnitude & DarkMap \cite{darkmap} \\
+        Average Annual Precipitation & CurrentResults.com \cite{currentresults} \\
+        \bottomrule
+    \end{tabular}
+\end{table}
