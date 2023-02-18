@@ -1,7 +1,7 @@
 from openpyxl import load_workbook
 
 # Areas to analyze
-geo_names = ['New York']
+geo_names = ['New York', 'Washington']
 
 # GDP items to be analyzed
 gdp_types = ['All industry total',
@@ -17,7 +17,6 @@ def read_gdp(filename: str = 'gdp.xlsx') -> dict:
     '''Read GDP data from xlsx file'''
     ret = {}
     workbook = load_workbook(filename)
-    # sheet = workbook['Table']
     sheet = workbook.worksheets[0]
 
     for geo in geo_names:
@@ -27,7 +26,7 @@ def read_gdp(filename: str = 'gdp.xlsx') -> dict:
                 desc = str(row[3].value).strip()
                 num = float(row[4].value) if not row[4].value == '' else 0
                 if desc in gdp_types:
-                    ret[geo][desc] = num
+                    ret[geo][desc + '(GDP)'] = num
     return ret
 
 def read_population(filename: str = 'population.xlsx') -> dict:
@@ -44,31 +43,50 @@ def read_population(filename: str = 'population.xlsx') -> dict:
                 ret[geo]['Density Rank'] = int(row[3].value)
     return ret
 
-def generate_power_consumption() -> dict:
-    '''Generate power consumption data'''
+def read_limiting_magnitude(filename: str = 'limiting_magnitude.xlsx') -> dict:
+    '''Reading limiting magnitude from xlsx'''
     ret = {}
+    workbook = load_workbook(filename)
+    sheet = workbook.worksheets[0]
+    for geo in geo_names:
+        ret[geo] = {}
+        for row in sheet.rows:
+            if row[0].value == geo:
+                ret[geo]['Limiting Magnitude'] = float(row[1].value)
+    return ret
+
+def read_power_consumption() -> dict:
+    '''Read power consumption data'''
+    ret = {}
+    return ret
+
+def read_all_data() -> dict:
+    '''Read and combine all data'''
+    all_data = [read_gdp(), read_population(), read_limiting_magnitude(), read_power_consumption()]
+    ret = {}
+    for item in all_data:
+        for (geo, data) in item.items():
+            if not geo in ret.keys():
+                ret[geo] = {}
+            ret[geo].update(data)
     return ret
 
 def generate_csv() -> str:
     '''Generate csv content'''
+    all_data = read_all_data()
+
     # generate title
     ret = 'Area'
-    for t in gdp_types:
-        ret += ', ' + t.replace(',', '') + '(GDP)'
-    ret += ', Population, Population Density, Density Rank\n'
-
-    # read data
-    gdp = read_gdp()
-    population = read_population()
+    for k, v in all_data[geo_names[0]].items():
+        ret += ', ' + k.replace(',', '')
+    ret += '\n'
 
     # write data
-    for geo in geo_names:
+    for geo, data in all_data.items():
         ret += geo
-        for t in gdp_types:
-            ret += ', ' + str(gdp[geo][t])
-        ret += ', ' + str(population[geo]['Population'])
-        ret += ', ' + str(population[geo]['Population Density'])
-        ret += ', ' + str(population[geo]['Density Rank'])
+        for k, v in data.items():
+            ret += ', ' + str(v)
+        ret += '\n'
     return ret
 
 if __name__ == '__main__':
