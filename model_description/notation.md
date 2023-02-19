@@ -18,7 +18,7 @@ $C_i$：矩阵C的第i行
 
 $C^*=[b_1^{max},b_2^{max},\cdots,b_j^{max}]$：正理想解
 
-$C^*=[b_1^{min},b_2^{min},\cdots,b_j^{min}]$：负理想解
+$C_0=[b_1^{min},b_2^{min},\cdots,b_j^{min}]$：负理想解
 
 $s_i^*$：$C_i$到正理想解的距离
 
