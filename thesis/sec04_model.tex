@@ -58,13 +58,13 @@ $$b_{ij}=\frac{a_{j}^{max}-a_{ij}}{a_j^{max}-a_j^{min}}$$
 
 All these data form the normalized matrix $B$. We then multiply each value in a column with the corresponding weight given, and get weighted-normalised decision matrix, which $$C=W*B$$
 
-Secondly, calculating the positive ideal solution $C^*$ and the negative ideal solution $C_0$, which$$C^*=[b_1^{max},b_2^{max},\cdots,b_8^{max}]$$ $$C_0=[b_1^{min},b_2^{min},\cdots,b_8^{min}]$$
+Secondly, calculating the positive ideal solution $C^*$ and the negative ideal solution $C_0$, which$$C^*=[b_1^{max},b_2^{max},\cdots,b_9^{max}]$$ $$C_0=[b_1^{min},b_2^{min},\cdots,b_9^{min}]$$
 
-Now we need to calculate Euclidean distance $s_i^{0}$ for elements in all rows from the positive ideal solution and the negative ideal solution.$$s_i^{0}=\sqrt{\sum_{i=1}^{3}(b_{ij}-C_i^{*})^{2}},j=1,2\cdots,9$$
+Now we need to calculate Euclidean distance $s_i^{0}$ for elements in all rows from the positive ideal solution and the negative ideal solution.$$s_i^{0}=\sqrt{\sum_{i=1}^{12}(b_{ij}-C_i^{*})^{2}},j=1,2\cdots,9$$
 
 Here, $s_i^*$ is the best distance calculated on the i-th row, where $b_{ij}$ is element value and $C_i^{*}$ is the ideal best for that column. Similarly, we can find $s_i^0$, which is the worst distance calculated on the i-th row.
 
-Finally, calculate the TOPSIS Score and Ranking. For $C_i,i=1,2,\cdots,9$, solve $s_i^*$, the distance to the positive ideal solution $C^*$, and $s_i^0$, the distance to the negative ideal solution $C_0$
+Finally, calculate the TOPSIS Score and Ranking. For $C_i,i=1,2,\cdots,12$, solve $s_i^*$, the distance to the positive ideal solution $C^*$, and $s_i^0$, the distance to the negative ideal solution $C_0$
 
 Now that we have $s_i^*$ and $s_i^0$. Then calculate the Topsis score for each row, and get the final score and ranking. $$f_i=\frac{s_i^0}{s_i^*+s_i^0}$$
 
