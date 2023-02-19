@@ -1,7 +1,7 @@
 %% part4
 \MinParskip{}
 
-\subsection{The Entropy Weight Method (EWM) }
+\subsection{The Optmized Entropy Weight Method (EWM) }
 We use the Entropy Weight Method (EWM) to get the weight of indicators. The Entropy Weight Method is an object weighting method, which uses the information entropy idea for reference. It is used to determine the relative weights of different criteria in a decision-making process. It determines the weight of the indicators by calculating the information entropy of the index, according to the impact of the relative change of the index on the overall system.
 
 In other words, the weight of each indicator is given according to the difference degree of the indicator value, and the corresponding weight of each indicator is obtained. The indicator with relatively large change degree has larger weight. 
@@ -14,24 +14,31 @@ Secondly, in the EWM, the entropy value $e_i$ of the jth index is defined as:$$e
 
 The range of entropy value $e_j$ is [0, 1]. The larger the $e_j$ is, the greater the differentiation degree of index j is, and more information can be derived. Hence, higher weight should be given to the index. 
 
-Finally, the calculation method of weight is:$$w_j=\frac{1-e_j}{\sum_{j=1}^me_j},j=1,2,\cdots,9$$
+Therefore, in the traditional EWM, the calculation method of weight is:$$w_j=\frac{1-e_j}{\sum_{j=1}^me_j},j=1,2,\cdots,9$$
 
-Through the three steps, we can easily get the weight of each indicator.
+It can be seen from the above equation that when $e_j\rightarrow1$,the difference in the entropy value of different evaluation indexes is small, but the difference in the entropy weight is large. Therefore, we use the following equation to calculate entropy weight instead of traditional equation.
+
+$$w_j^{'}=\frac{1+e_j+\sum_{k=1}^ne_k}{\sum_{l=1}^n(1-2e_l+\sum_{k=1}^ne_k)}$$
+
+In the above method, the different entropy weights for different indicators (e.g. $p$ and $q$)become $$\Delta w=2\Delta e/C$$ where $$\Delta e=e_p-e_q,C=\sum_{l=1}^n(1-2e_l+\sum_{k=1}^ne_k)$$
+
+It indicates that the entropy value changes slightly, and its corresponding entropy weight also changes slightly. For the factor with equivalent useful information, the weight information is consistent with the corresponding entropy level.
+
 
 \begin{table}[H] \centering
-    \caption{Weights of the Indicators Calculated from TOPSIS}
+    \caption{Weights of the Indicators Calculated from optimized EWM method}
     \begin{tabular}{ccl}
         \toprule
         Indicators & Weights\\ \hline
-        All industry total & 0.36639\\
-        All tertiary industry percentage & 0.01866\\
-        Population Density & 0.43171\\
-        Limiting Magnitude & 0.01781\\
-        Last Bus Time & 0.06481\\
-        Power Consumption per Capita per Month & 0.00091\\
-        Annual Precipitation(in millimetre) & 0.08705\\
-        Work hours per Week & 0.00003\\
-        Nightlife index & 0.01263\\
+        All industry total & 0.12709\\
+        All tertiary industry percentage & 0.12376\\
+        Population Density & 0.12742\\
+        Limiting Magnitude & 0.12390\\
+        Last Bus Time & 0.12436\\
+        Power Consumption per Capita per Month & 0.12378\\
+        Annual Precipitation(in millimetre) & 0.12411\\
+        Work hours per Week & 0.12581\\
+        Nightlife index & 0.12402\\
         \bottomrule
     \end{tabular}
 \end{table}
@@ -49,7 +56,7 @@ $$b_{ij}=\frac{a_{ij}-a_j^{min}}{a_j^{max}-a_j^{min}}$$
 And for the cost-attributed data,
 $$b_{ij}=\frac{a_{j}^{max}-a_{ij}}{a_j^{max}-a_j^{min}}$$
 
-All these data from the normalized matrix $B$. We then multiply each value in a column with the corresponding weight given, and get weighted-normalised decision matrix, which $$C=W*B$$
+All these data form the normalized matrix $B$. We then multiply each value in a column with the corresponding weight given, and get weighted-normalised decision matrix, which $$C=W*B$$
 
 Secondly, calculating the positive ideal solution $C^*$ and the negative ideal solution $C_0$, which$$C^*=[b_1^{max},b_2^{max},\cdots,b_8^{max}]$$ $$C_0=[b_1^{min},b_2^{min},\cdots,b_8^{min}]$$
 
@@ -73,7 +80,7 @@ Today, Wyoming's economy is largely based on tourism. So its tertiary industry p
 
 Due to it's geographical position, it's annual precipitation is 390 millimeters. And with its vast land, the limiting magnitude in Wyoming is 8.3, which means you can see several faint planet.
 
-According to the indicators we mentioned before, it's night-light intensity score in our model is 0.0507, which ranks the second-lowest in our selected locations. This shows that our model's application for protected location  is in line with the reality.
+According to the indicators we mentioned before, it's night-light intensity score in our model is 0.18786, which ranks the lowest in our selected locations. This shows that our model's application for protected location is in line with the reality.
 \begin{figure}[H]\centering
     \includegraphics[width=0.9\textwidth]{figures/texted/Wyoming_new.jpg}
     \caption{Night-time Light Intensity of Wyoming} \label{fig:figure3}
@@ -89,7 +96,7 @@ Legalized gambling and lenient marriage and divorce laws transformed Nevada into
 
 Nevada is the driest state, and its annual precipitation is 241 millimeters. Its limiting magnitude is 8.3, which means you can rarely see faint planet.
 
-According to the indicators we mentioned before, its night-light intensity score in our model is 0.0760, which ranks above all the protected locations in our selected locations, but below all the more prosperous states. This shows that our model's application for rural community is in line with the reality.
+According to the indicators we mentioned before, its night-light intensity score in our model is 0.38081, which ranks above all the protected locations in our selected locations, but below all the more prosperous states. This shows that our model's application for rural community is in line with the reality.
 
 \subsubsection{A Suburban Community: California}
 Although California is full of modern metropolises such as Los Angeles and San Fransisco, we categorize it as a suburban community, since most area of California is not cities but suburban areas and hilly areas.
@@ -102,8 +109,7 @@ Sacramento is the state's capital, while Los Angeles is the most populous city i
 
 California has a Mediterranean climate, depending on latitude, elevation, and proximity to the Pacific Coast. Its terrain varies widely from hot desert to alpine tundra. The average annual precipitation is 563 millimeters. And its limiting magnitude is 6, which means it's hard for you to see the stars by eyes.
 
-According to the indicators we mentioned before, its night-light intensity score in our model is 0.52997
-, second-highest in the selected locations, even higher than Massachusetts and New York. It clearly reflects the high density of the suburban regions of California.
+According to the indicators we mentioned before, its night-light intensity score in our model is 0.59146, highest in the suburban locations, but lower than Massachusetts and New York. It clearly reflects the high density of the suburban regions of California, and the result is in line with the reality.
 
 \begin{figure}[H]\centering
     \includegraphics[width=0.9\textwidth]{figures/texted/Nevada.jpg}
@@ -120,7 +126,7 @@ Since New York is famous for its economy, its tertiary industry percentage is th
 
 New York State has a temperate continental humid climate, with an annual precipitation 1062 millimeters. And with its well-explored land, the limiting magnitude in New York State is 4, which means you can seldom see faint planets.
 
-But according to the model, New York State night-light intensity score is 0.439, which ranks the fourth-highest in all but the lowest in the urban locations, even lower than California which is categorized as suburban communities. The result also makes sense since New York State have large part of area where is shown as green and blue in the picture below(Figure 5), respoding to a low night-time light intensity.
+According to the model, New York State night-light intensity score is 0.69031, which ranks the highest in all, in line with the reality.
 
 \begin{figure}[H]\centering
     \includegraphics[width=0.9\textwidth]{figures/texted/New_York.jpg}
@@ -134,18 +140,18 @@ But according to the model, New York State night-light intensity score is 0.439,
     \begin{tabular}{llll}
         \toprule
         Types of Locations & States & Score & Ranking\\ \hline\hline
-        \multirow{3}{*}{\textbf{Urban Communities}} & New Jersey & 0.58612 & \multicolumn{1}{c}{1}\\
-                            &  Massachusetts & 0.48414 & \multicolumn{1}{c}{3}\\
-                           & New York & 0.43901 & \multicolumn{1}{c}{4}\\\hline
-        \multirow{3}{*}{\textbf{Suburban Communities}} & California & 0.52997 & \multicolumn{1}{c}{2}\\
-                            & Pennsylvania & 0.24043 & \multicolumn{1}{c}{5}\\
-                           & Washington & 0.15503 & \multicolumn{1}{c}{6}\\\hline
-        \multirow{3}{*}{\textbf{Rural Communities}} & Missouri & 0.10161 & \multicolumn{1}{c}{7}\\
-                            & Mississippi & 0.10027 & \multicolumn{1}{c}{8}\\
-                           & Nevada & 0.07608 & \multicolumn{1}{c}{9}\\\hline
-        \multirow{3}{*}{\textbf{Protected Land Locations}}& Montana & 0.05937 & \multicolumn{1}{c}{10}\\
-                            & Wyoming & 0.05075 & \multicolumn{1}{c}{11}\\
-                           & Alaska & 0.04978 & \multicolumn{1}{c}{12}\\
+        \multirow{3}{*}{\textbf{Urban Communities}}& New York & 0.69031 & \multicolumn{1}{c}{1}\\
+                            &  Massachusetts & 0.60754 & \multicolumn{1}{c}{2}\\
+                            & New Jersey & 0.59492& \multicolumn{1}{c}{3}\\\hline
+        \multirow{3}{*}{\textbf{Suburban Communities}} & California & 0.59146 & \multicolumn{1}{c}{4}\\
+                            & Pennsylvania & 0.48859 & \multicolumn{1}{c}{5}\\
+                           & Washington & 0.40662 & \multicolumn{1}{c}{6}\\\hline
+        \multirow{3}{*}{\textbf{Rural Communities}}& Missouri & 0.40527 &\multicolumn{1}{c}{7}\\
+                            & Nevada & 0.38081 & \multicolumn{1}{c}{8}\\
+                            & Mississippi & 0.36775 & \multicolumn{1}{c}{9}\\\hline
+        \multirow{3}{*}{\textbf{Protected Land Locations}}& Montana & 0.34936 & \multicolumn{1}{c}{10}\\
+                            & Alaska & 0.21363  & \multicolumn{1}{c}{11}\\
+                           & Wyoming & 0.18786 & \multicolumn{1}{c}{12}\\
         \bottomrule
     \end{tabular}
 \end{table}
