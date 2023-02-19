@@ -2,13 +2,19 @@
 clc, clear;
 
 %% Choose state and factor to analysis
-% 3 for Population Density             253.7 to 252
-% 4 for Limit magnitude                6 to 7
-% 8 for Work hours per Week            38.3 to 37.7
+% 4 for California:
+% 3 for Population Density                       253.7 to 252
+% 4 for Limit magnitude                          6 to 7
+% 8 for Work hours per Week                      38.3 to 37.7
 
-state = 4; % California
-factor = [3 4 8];
-changed = [253.7 252; 6 7; 38.3 37.7];
+% 2 for New York:
+% 6 for Power Consumption per Capita per Month   412.8 to 400
+% 2 for All tertiary industry percentage         0.387 to 0.36
+% 9 for Nightlife index                          83 to 70
+
+state = 2;
+factor = [6 2 9];
+changed = [412.8 400; 0.387 0.36; 83 70];
 
 %% Import data from csv
 % Set option
