@@ -14,7 +14,7 @@ opts = setvaropts(opts, "Area", "WhitespaceRule", "preserve");
 opts = setvaropts(opts, "Area", "EmptyFieldRule", "auto");
 combined = readtable("../data/combined.csv", opts);
 
-cities = table2array(combined(:, 1));
+states = table2array(combined(:, 1));
 a = table2array(combined(:, 2:10));
 
 %% calculate weight
@@ -63,4 +63,4 @@ C0(8) = max(c(:, 8));
 Sstar = vecnorm(c - Cstar, 2, 2);
 S0 = vecnorm(c - C0, 2, 2);
 f = S0 ./ (Sstar + S0); % higher means worse light pollution
-result = cat(2, cities, f)
+result = cat(2, states, f)
