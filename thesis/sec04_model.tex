@@ -51,9 +51,15 @@ $$b_{ij}=\frac{a_{j}^{max}-a_{ij}}{a_j^{max}-a_j^{min}}$$
 
 All these data from the normalized matrix $B$. We then multiply each value in a column with the corresponding weight given, and get weighted-normalised decision matrix, which $$C=W*B$$
 
-Secondly, calculating the ideal best and the ideal worst. Now we need to calculate Euclidean distance for elements in all rows from the ideal best and the ideal worst. Here, $s_i^*$ is the best distance calculated on the i-th row, where $b_{ij}$ is element value and $C_i^{*}$ is the ideal best for that column. Similarly, we can find $s_i^0$, which is the worst distance calculated on the i-th row.
+Secondly, calculating the positive ideal solution $C^*$ and the negative ideal solution $C_0$, which$$C^*=[b_1^{max},b_2^{max},\cdots,b_8^{max}]$$ $$C_0=[b_1^{min},b_2^{min},\cdots,b_8^{min}]$$
 
-Finally, calculate the TOPSIS Score and Ranking. Now that we have distance positive and distance negative. Then calculate the Topsis score for each row based on them in the end.
+Now we need to calculate Euclidean distance $s_i^{0}$ for elements in all rows from the positive ideal solution and the negative ideal solution.$$s_i^{0}=\sqrt{\sum_{i=1}^{3}(b_{ij}-C_i^{*})^{2}},j=1,2\cdots,9$$
+
+Here, $s_i^*$ is the best distance calculated on the i-th row, where $b_{ij}$ is element value and $C_i^{*}$ is the ideal best for that column. Similarly, we can find $s_i^0$, which is the worst distance calculated on the i-th row.
+
+Finally, calculate the TOPSIS Score and Ranking. For $C_i,i=1,2,\cdots,9$, solve $s_i^*$, the distance to the positive ideal solution $C^*$, and $s_i^0$, the distance to the negative ideal solution $C_0$
+
+Now that we have $s_i^*$ and $s_i^0$. Then calculate the Topsis score for each row, and get the final score and ranking. $$f_i=\frac{s_i^0}{s_i^*+s_i^0}$$
 
 \subsection{Application of the Model on the Four Locations}
 
@@ -69,7 +75,7 @@ Due to it's geographical position, it's annual precipitation is 390 millimeters.
 
 According to the indicators we mentioned before, it's night-light intensity score in our model is 0.0507, which ranks the second-lowest in our selected locations. This shows that our model's application for protected location  is in line with the reality.
 \begin{figure}[H]\centering
-    \includegraphics[width=0.68\textwidth]{figures/texted/Wyoming_new.jpg}
+    \includegraphics[width=0.9\textwidth]{figures/texted/Wyoming_new.jpg}
     \caption{Night-time Light Intensity of Wyoming} \label{fig:figure3}
 \end{figure}
 
@@ -97,10 +103,10 @@ Sacramento is the state's capital, while Los Angeles is the most populous city i
 California has a Mediterranean climate, depending on latitude, elevation, and proximity to the Pacific Coast. Its terrain varies widely from hot desert to alpine tundra. The average annual precipitation is 563 millimeters. And its limiting magnitude is 6, which means it's hard for you to see the stars by eyes.
 
 According to the indicators we mentioned before, its night-light intensity score in our model is 0.52997
-, second-highest in the selected locations, even higher than Massachusetts and New York. It clearly shows the high density of the suburban regions of California.
+, second-highest in the selected locations, even higher than Massachusetts and New York. It clearly reflects the high density of the suburban regions of California.
 
 \begin{figure}[H]\centering
-    \includegraphics[width=1\textwidth]{figures/texted/Nevada.jpg}
+    \includegraphics[width=0.9\textwidth]{figures/texted/Nevada.jpg}
     \caption{Night-time Light Intensity of California and Nevada} \label{fig:figure4}
 \end{figure}
 
@@ -117,7 +123,7 @@ New York State has a temperate continental humid climate, with an annual precipi
 But according to the model, New York State night-light intensity score is 0.439, which ranks the fourth-highest in all but the lowest in the urban locations, even lower than California which is categorized as suburban communities. The result also makes sense since New York State have large part of area where is shown as green and blue in the picture below(Figure 5), respoding to a low night-time light intensity.
 
 \begin{figure}[H]\centering
-    \includegraphics[width=1\textwidth]{figures/texted/New_York.jpg}
+    \includegraphics[width=0.9\textwidth]{figures/texted/New_York.jpg}
     \caption{Night-time Light Intensity of New York State} \label{fig:figure5}
 \end{figure}
 
