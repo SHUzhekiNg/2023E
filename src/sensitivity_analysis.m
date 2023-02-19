@@ -4,12 +4,12 @@ clc, clear;
 %% Choose state and factor to analysis
 % 2 for Regional industrial structure  0.20:0.0005:0.25
 % 3 for Population Density             253.7:-0.01:252
-% 4 for Limit magnitude                5/6:0.02:7
-% 8 for Work hours per Week            38.3:-0.01:37.7
+% 4 for Limit magnitude                5:0.02:7
+% 8 for Work hours per Week            38.3:-0.005:37.7
 
 state = 2; % California
-factor = 3;
-range = 253.7:-0.01:252;
+factor = 8;
+range = 38.3:-0.005:37.7;
 
 %% Import data from csv
 % Set option
@@ -25,11 +25,11 @@ opts = setvaropts(opts, "Area", "EmptyFieldRule", "auto");
 combined = readtable("../data/combined.csv", opts);
 
 states = table2array(combined(:, 1));
-a = table2array(combined(:, 2:10));
 
 %% Get data
 result = [];
 for data = range
+    a = table2array(combined(:, 2:10));
     %% Replace data
     a(state, factor) = data;
 
