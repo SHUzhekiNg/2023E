@@ -2,9 +2,14 @@
 clc, clear;
 
 %% Choose state and factor to analysis
-state = 4; % California
-factor = 4; % 2 for Regional industrial structure, 4 for Limit magnitude
-range = 5:0.02:7; % 0.20:0.0005:0.25  5:0.02:7
+% 2 for Regional industrial structure  0.20:0.0005:0.25
+% 3 for Population Density             253.7:-0.01:252
+% 4 for Limit magnitude                5:0.02:7
+% 8 for Work hours per Week            38.3:-0.005:37.7
+
+state = 2; % California
+factor = 8;
+range = 38.3:-0.005:37.7;
 
 %% Import data from csv
 % Set option
@@ -20,11 +25,11 @@ opts = setvaropts(opts, "Area", "EmptyFieldRule", "auto");
 combined = readtable("../data/combined.csv", opts);
 
 states = table2array(combined(:, 1));
-a = table2array(combined(:, 2:10));
 
 %% Get data
 result = [];
 for data = range
+    a = table2array(combined(:, 2:10));
     %% Replace data
     a(state, factor) = data;
 
@@ -65,6 +70,9 @@ for data = range
     for i = 1:n
         w(i) = (sum(h) + 1 - h(i)) / sum(sum(h) + 1 - 2 .* h);
     end
+    
+    % Fix weight
+    w = [0.127087741240120	0.123761157821582	0.127423839685724	0.123903097673091	0.124360802763785	0.123780549158867	0.124106686595032	0.125811891189744	0.124024924276506];
 
     %% TOPSIS
 
@@ -91,4 +99,5 @@ out = cat(2, range', result');
 %f = fittype()
 %line = polyfit(range, result, 2);
 %linefit = polyval(line, range);
-%plot(range,result','bo',range,linefit,'k-','Markersize',3.5)
+plot(range, result, 'b');
+
