@@ -3,13 +3,11 @@ clc, clear;
 
 %% Choose state and factor to analysis
 % 2 for Regional industrial structure  0.20:0.0005:0.25
-% 3 for Population Density             253.7:-0.01:252
 % 4 for Limit magnitude                5:0.02:7
-% 8 for Work hours per Week            38.3:-0.005:37.7
 
-state = 2; % California
-factor = 8;
-range = 38.3:-0.005:37.7;
+state = 4; % California
+factor = 4;
+range = 5:0.02:7;
 
 %% Import data from csv
 % Set option
@@ -29,6 +27,7 @@ states = table2array(combined(:, 1));
 %% Get data
 result = [];
 for data = range
+    %% Reread data
     a = table2array(combined(:, 2:10));
     %% Replace data
     a(state, factor) = data;
@@ -39,30 +38,22 @@ for data = range
 
     % rescale
     for i = 1:n
-
         if n == 5 || n == 8
             a(:, i) = 1 - (a(:, i) - min(a(:, i))) / (max(a(:, i)) - min(a(:, i)));
         else
             a(:, i) = (a(:, i) - min(a(:, i))) / (max(a(:, i)) - min(a(:, i)));
         end
-
     end
 
     % calculate weight
     p = a ./ sum(a);
-
     h = zeros(1, n);
-
     for i = 1:n
-
         for j = 1:m
-
             if p(j, i) ~= 0
                 h(i) = h(i) - p(j, i) * log(p(j, i)) / log(n);
             end
-
         end
-
     end
 
     w = zeros(1, n);
@@ -72,7 +63,7 @@ for data = range
     end
     
     % Fix weight
-    w = [0.127087741240120	0.123761157821582	0.127423839685724	0.123903097673091	0.124360802763785	0.123780549158867	0.124106686595032	0.125811891189744	0.124024924276506];
+    % w = [0.127087741240120	0.123761157821582	0.127423839685724	0.123903097673091	0.124360802763785	0.123780549158867	0.124106686595032	0.125811891189744	0.124024924276506];
 
     %% TOPSIS
 
